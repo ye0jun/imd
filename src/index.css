@@ -32,6 +32,10 @@ code {
   font-family: "CamptonBold";
 }
 
-.inline {
+.ib {
   display: inline-block;
+}
+
+.margin0{
+  margin : 0px;
 }
