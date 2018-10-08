@@ -1,0 +1,33 @@
+.Header{
+  .gnb-container{
+    font-family: "CamptonBold";
+    top: 0;
+    line-height: 56px;
+    width: 100vw;
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 48px;
+    a{
+      text-decoration: none;
+    }
+    #logo{
+      float: left;
+      margin-left: 64px;
+    }
+    .menu-items{
+      margin: 0;
+      text-align: right;
+      li{
+        width: 80px;
+        margin-right: 56px;
+        display: inline-block;
+        vertical-align: top;
+        line-height: 20px;
+      }
+    }
+  }
+
+  #logo-image{
+    width: 30px;
+  }
+}
