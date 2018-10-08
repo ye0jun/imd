@@ -35,3 +35,11 @@ code {
 .inline {
   display: inline-block;
 }
+h1{
+  font-size: 48px;
+  color: #000;
+}
+.marginContainer{
+  margin-left: 64px;
+  margin-right: 64px;
+}

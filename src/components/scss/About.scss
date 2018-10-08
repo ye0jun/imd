@@ -1,0 +1,47 @@
+.About{
+  .section1{
+    h1{
+      color: #000;
+      margin-top: 80px;
+    }
+  }
+  .imgContainer{
+    width: 100%;
+    display: flex;
+    .img1{
+      flex: 1;
+      height: 40vw;
+      background-image: url(../resource/image/dummy.png);
+      background-size:cover;
+      margin-right: 8px;
+    }
+    .img2{
+      flex: 1;
+      margin-left: 8px;
+      height: 40vw;
+      background-image: url(../resource/image/dummy.png);
+      background-size:cover;
+    }
+  }
+  .videoSize{
+    height: 640px;
+    overflow: hidden;
+    .videoLayer {
+      height: 640px;
+      width: 100%;
+      overflow: hidden;
+      video {
+        position: absolute;
+        // min-width: 100%;
+        // min-height: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .section3{
+    h1, p{
+      width: 50%;
+      display: inline-block;
+    }
+  }
+}
