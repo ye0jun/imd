@@ -2,14 +2,14 @@
   "data" : [
     {
       "videoUrl" : "/resource/video/test.mp4",
-      "title" : "title1",
+      "title" : "Iceburg in Iceland",
       "location" : "location1",
       "year" : "2018",
       "count" : 12
     },
     {
       "videoUrl" : "/resource/video/test.mp4",
-      "title" : "title2",
+      "title" : "Music Festival",
       "location" : "location2",
       "year" : "2018",
       "count" : 5

@@ -18,7 +18,49 @@ $myColor: #c032ca;
 
   #mainContainer{
     margin-top: 100px;
+    margin-bottom : 100px;
     margin-left: 60px;
     font-size: 24px;
+  }
+  
+  .videoHoverContainer{
+    position : absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 340px;
+    display: none;
+    cursor: pointer;
+  }
+
+  .videoHover-background{
+    position : absolute;
+    left: 0px;
+    top: 0px;
+    background: #000000;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+  }
+
+  .videoHover-textContainer{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+  }
+
+  .informationContainer{
+    margin-top: 20px;
+  }
+
+  .information-firstLine{
+    display: flex;
+  }
+
+  .informationSubText{
+    font-size: 15px;
+    color : #898888;
   }
 }
