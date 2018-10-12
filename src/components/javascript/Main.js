@@ -7,10 +7,9 @@ import ScrollReveal from 'scrollreveal'
 import $ from 'jquery'
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    console.log(mainJson);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentDidMount() {
     ScrollReveal().reveal('.videoAnimate', {
@@ -57,7 +56,7 @@ class Main extends Component {
               marginTop: '120px'
             }
 
-            if (i % 2 == 0) {
+            if (i % 2 === 0) {
               contentContainerStyle.marginLeft = '11%';
               contentContainerStyle.marginRight = 'auto';
             }
@@ -77,7 +76,7 @@ class Main extends Component {
                     <div className="videoHover-background"></div>
                     <div className="videoHover-textContainer">
                       <p className="b margin0" style={{ color: 'white' }}>{data.title}</p>
-                      <p className="b margin0" style={{ color: 'white', fontSize : '15px'}}><img src={videoIcon} style={{width:'12px',verticalAlign:'middle'}}></img>  {data.count} Video</p>
+                      <p className="b margin0" style={{ color: 'white', fontSize : '15px'}}><img src={videoIcon} alt="video icon" style={{width:'12px',verticalAlign:'middle'}}></img>  {data.count} Video</p>
                     </div>
                   </div>
                 </div>
