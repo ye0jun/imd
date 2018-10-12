@@ -39,6 +39,9 @@ h1{
   font-size: 48px;
   color: #000;
 }
+.bodyText{
+  font-size: 24px;
+}
 .marginContainer{
   margin-left: 64px;
   margin-right: 64px;

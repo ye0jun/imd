@@ -25,7 +25,7 @@ class About extends Component {
         </div>
         <div className="section3 marginContainer">
           <h1 className="b">Services</h1>
-          <p className="l">Make your video more dynamic, dramatic 
+          <p className="l bodyText">Make your video more dynamic, dramatic 
   and diversMake your video more dynamic, dramatic 
   and diversMake your video more dynamic, dramatic 
   and diversMake your video more dynamic, dramatic 
