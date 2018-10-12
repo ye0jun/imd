@@ -1,0 +1,17 @@
+{
+  "data" : [
+    {
+      "videoUrl" : "/resource/video/test.mp4",
+      "title" : "Ring road bird eye view",
+      "price" : "87000",
+      "Category" : "landscape",
+      "Dron" : "mavic pro",
+      "Frame rate" : "24 fps",
+      "Curated Gallery" : "-",
+      "Resolution" : "1080p",
+      "raw data" : "d-cinelike",
+      "location" : "vik, iceland",
+      "tag" : "nature, road, tree, landscape"
+    }
+  ]
+}
