@@ -21,5 +21,31 @@
       "year" : "2018",
       "count" : 23
     }
+  ],
+  "gallery" : [
+    {
+      "imgUrl" : "/resource/image/dummy.png",
+      "imgTitle" : "img1"
+    },
+    {
+      "imgUrl" : "/resource/image/dummy.png",
+      "imgTitle" : "img2"
+    },
+    {
+      "imgUrl" : "/resource/image/dummy.png",
+      "imgTitle" : "img3"
+    },
+    {
+      "imgUrl" : "/resource/image/dummy.png",
+      "imgTitle" : "img4"
+    },
+    {
+      "imgUrl" : "/resource/image/dummy.png",
+      "imgTitle" : "img5"
+    },
+    {
+      "imgUrl" : "/resource/image/dummy.png",
+      "imgTitle" : "img6"
+    }
   ]
 }
