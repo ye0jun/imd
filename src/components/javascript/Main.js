@@ -23,6 +23,7 @@ class Main extends Component {
       delay: 150,
     });
 
+    $('.videoContainer').height($('body')[0].clientHeight);
   }
 
   videoContainerMouseEnter(e) {

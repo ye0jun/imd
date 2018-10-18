@@ -40,6 +40,10 @@ code {
 .ib {
   display: inline-block;
 }
+
+.c{
+  text-align: center;
+}
 h1{
   font-size: 48px;
   color: #000;

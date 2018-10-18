@@ -1,0 +1,44 @@
+.Footer {
+  #container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color : #898888;
+
+    .title {
+      font-size: 18px;
+      margin-top: 0px;
+      margin-bottom: 20px;
+    }
+    .content {
+      font-size: 14px;
+      margin: 5px 0px;
+    }
+    #contact {
+      width: 28%;
+    }
+    #social {
+      width: 28%;
+
+      .content-left{
+        width: 20%;
+      }
+    }
+    #legal {
+      width: 28%;
+    }
+    #credit {
+      width: 16%;
+      position: relative;
+      #creditContainer{
+        position : absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 5%;
+
+        img{
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}

@@ -12,8 +12,9 @@ import Checkout from './components/javascript/Checkout';
 import Contact from './components/javascript/Contact';
 import SignIn from './components/javascript/SignIn';
 import Work from './components/javascript/Work';
-import Header from './components/javascript/_Header'
-
+import Header from './components/javascript/_Header';
+import Detail from './components/javascript/Detail';
+import Footer from './components/javascript/_Footer';
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(
   <Router>
@@ -28,8 +29,10 @@ ReactDOM.render(
         <Route path="/footage" component={Footage} />
         <Route path="/signin" component={SignIn} />
         <Route path="/work" component={Work} />
+        <Route path="/detail/:id" component={Detail} />
         <Route component={NoMatch} />
       </Switch>
+      <Route component={Footer} />
     </div>
   </Router>,
   document.getElementById('root')

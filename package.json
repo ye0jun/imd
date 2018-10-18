@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animejs": "^2.2.0",
     "jquery": "^3.3.1",
     "node-sass": "^4.9.3",
+    "plyr": "^3.4.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-pose": "^3.3.6",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
+    "react-transition-group": "^2.5.0",
     "scrollreveal": "^4.0.4"
   },
   "scripts": {

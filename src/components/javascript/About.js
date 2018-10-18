@@ -73,7 +73,7 @@ class About extends Component {
                   console.log(gallery);
                   if ( i < 3 ){
                     return (
-                      <img alt="sample" key={i} src={gallery.imgUrl} className="galleryImg"></img>
+                      <img alt="sample" key={i} src={'..'+gallery.imgUrl} className="galleryImg"></img>
                     );
                   }
                 })}

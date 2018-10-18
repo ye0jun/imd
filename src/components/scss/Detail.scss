@@ -1,0 +1,83 @@
+.Detail {
+  #container {
+    margin-top: 75px; // width: 100%;
+    height: 390px;
+    #sectionContainer {
+      height: 100%;
+      margin-right: 100px;
+    }
+    #section-left {
+      width: 10%;
+      height: 100%;
+    }
+    #section-center {
+      width: 47%;
+      height: 100%;
+      margin-right: 3%;
+      vertical-align: top;
+      video {
+        object-fit: cover;
+      }
+    }
+    #section-right {
+      width: 40%;
+      height: 100%;
+      position: relative;
+      #section-top {
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        border-top: solid;
+        #title {
+          float: left;
+          font-size: 20px;
+        }
+        #price {
+          float: right;
+          font-size: 20px;
+        }
+      }
+      #section-middle {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        td {
+          padding: 5px 0px;
+        }
+      }
+      #section-bottom {
+        width: 100%;
+        position: absolute;
+        display: flex;
+        bottom: 0px;
+        .vc {
+          margin: 0px;
+          height: 100%;
+          line-height: 60px;
+        }
+        .button {
+          width: 47.5%;
+          height: 60px;
+          color: white;
+          font-size: 20px;
+          position: relative;
+        }
+        #cart {
+          background: #898888;
+          margin-right: 5%;
+          #cart-animation {
+            position: absolute;
+            width: 0px;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+          }
+        }
+        #buy {
+          background: #000000;
+        }
+      }
+    }
+  }
+}

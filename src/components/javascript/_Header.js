@@ -57,7 +57,7 @@ class Header extends Component {
               headerFontStyle.fontFamily = "CamptonBold";
             }
             
-            return <li key={key}><Link style={headerFontStyle} to={value}>{value}</Link></li>;
+            return <li key={key}><Link style={headerFontStyle} to={'/'+value}>{value}</Link></li>;
           })}
           </ul>
         </div>

@@ -1,7 +1,6 @@
 {
-  "data": [
-    {
-      "title": "Ring road bird eye view",
+  "data": {
+    "Ring road bird eye view": {
       "videoUrl": "/video/sample_1.mp4",
       "price": "87000",
       "Category": "landscape",
@@ -13,8 +12,7 @@
       "location": "vik, iceland",
       "tag": "nature, road, tree, landscape"
     },
-    {
-      "title": "Budapest bridge",
+    "Budapest bridge": {
       "videoUrl": "/video/sample_2.mp4",
       "price": "80000",
       "Category": "cityscape",
@@ -26,8 +24,7 @@
       "location": "budapest, hungary",
       "tag": "city, bridge, river, people"
     },
-    {
-      "title": "Music festival",
+    "Music festival": {
       "videoUrl": "/video/sample_3.mp4",
       "price": "70000",
       "Category": "people",
@@ -39,8 +36,7 @@
       "location": "seoul, korea",
       "tag": "festival, people, music,concert"
     },
-    {
-      "title": "Havana city view",
+    "Havana city view": {
       "videoUrl": "/video/sample_4.mp4",
       "price": "89000",
       "Category": "cityscape",
@@ -52,8 +48,7 @@
       "location": "havana, cuba",
       "tag": "city, havana, building"
     },
-    {
-      "title": "Cancun island",
+    "Cancun island": {
       "videoUrl": "/video/sample_5.mp4",
       "price": "89000",
       "Category": "ocean",
@@ -65,8 +60,7 @@
       "location": "cancun, mexico",
       "tag": "ocean, beach, boat, sea"
     },
-    {
-      "title": "Morroco marrakesh",
+    "Morroco marrakesh": {
       "videoUrl": "/video/sample_6.mp4",
       "price": "89000",
       "Category": "cityscape",
@@ -78,8 +72,7 @@
       "location": "marrakesh, morroco",
       "tag": "city, mosk, arab"
     },
-    {
-      "title": "Lima ocean",
+    "Lima ocean": {
       "videoUrl": "/video/sample_7.mp4",
       "price": "91000",
       "Category": "landscape",
@@ -91,8 +84,7 @@
       "location": "lima, peru",
       "tag": "ocean, landscape, surfing"
     },
-    {
-      "title": "Gangwondo mt",
+    "Gangwondo mt": {
       "videoUrl": "/video/sample_8.mp4",
       "price": "68000",
       "Category": "mountain",
@@ -104,8 +96,7 @@
       "location": "gangwondo, korea",
       "tag": "mountain, landscape, forest"
     },
-    {
-      "title": "Iceland 3th road",
+    "Iceland 3th road": {
       "videoUrl": "/video/sample_9.mp4",
       "price": "88000",
       "Category": "road",
@@ -117,8 +108,7 @@
       "location": "vik, iceland",
       "tag": "road, car, highway"
     },
-    {
-      "title": "Running woman in city",
+    "Running woman in city": {
       "videoUrl": "/video/sample_10.mp4",
       "price": "69000",
       "Category": "people",
@@ -130,5 +120,5 @@
       "location": "incheon, korea",
       "tag": "sports, running, city, lifestyle"
     }
-  ]
+  }
 }
