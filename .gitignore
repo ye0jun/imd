@@ -12,6 +12,7 @@
 /src/components/resource/video
 
 /public/video
+/public/image
 
 # misc
 .DS_Store

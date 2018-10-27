@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React, { Component } from 'react';
 import '../scss/About.scss';
 import mainVideo from '../resource/video/main.mp4';
@@ -70,7 +71,6 @@ class About extends Component {
             <div className="gallery">
               <div className="imgList top">
                 {mainJson.gallery.map((gallery, i) => {
-                  console.log(gallery);
                   if ( i < 3 ){
                     return (
                       <img alt="sample" key={i} src={'..'+gallery.imgUrl} className="galleryImg"></img>

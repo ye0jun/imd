@@ -14,7 +14,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
     "react-transition-group": "^2.5.0",
-    "scrollreveal": "^4.0.4"
+    "scrollreveal": "^4.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -6,12 +6,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-html, body, #root{
-  height : 100%;
+html,
+body,
+#root {
+  height: 100%;
 }
 
-::-webkit-scrollbar { 
+::-webkit-scrollbar {
   display: none;
 }
 
@@ -29,6 +30,24 @@ code {
   src: url("./components/resource/font/CamptonLight\ DEMO.otf");
 }
 
+#transparent {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: #000000;
+  opacity: 0;
+  z-index: 2;
+  display: none;
+}
+
+#disableScroll{
+  height: 100%;
+  left: 0px;
+  right: 0px;
+}
+
 .l {
   font-family: "CamptonLight";
 }
@@ -41,24 +60,47 @@ code {
   display: inline-block;
 }
 
-.c{
+.c {
   text-align: center;
 }
-h1{
+
+h1 {
   font-size: 48px;
   color: #000;
 }
-h2{
+
+h2 {
   font-size: 36px;
 }
-.bodyText{
+
+.bodyText {
   font-size: 24px;
 }
-.marginContainer{
+
+.marginContainer {
   margin-left: 64px;
   margin-right: 64px;
 }
 
-.margin0{
-  margin : 0px;
+.margin0 {
+  margin: 0px;
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: all 500ms ease-in;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0.01;
+  transition: all 500ms ease-in;
+}
+
+.gray {
+  color: #898888;
 }
