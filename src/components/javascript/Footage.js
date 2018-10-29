@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import '../scss/Footage.scss';
 import { Link } from 'react-router-dom'
@@ -16,10 +17,16 @@ class Footage extends Component {
     super(props);
 
     this.state = {
-      Category: '.',
-      Drone: '.',
-      'Frame rate': '.',
-      Resolution: '.'
+      filters: {
+        Category: '.',
+        Drone: '.',
+        'Frame rate': '.',
+        Resolution: '.'
+      },
+      filtering: [],
+      filteredData: [],
+      page: 1,
+      maxPage: 1
     }
   }
 
@@ -48,6 +55,7 @@ class Footage extends Component {
   }
 
   componentDidMount() {
+    this.setFilter('Category', '.');
     this.videoSetting();
   }
 
@@ -56,9 +64,35 @@ class Footage extends Component {
   }
 
   setFilter(state, value) {
-    const settingValue = {};
-    settingValue[state] = value;
-    this.setState(settingValue);
+    const filters = this.state.filters;
+    filters[state] = value;
+    const filtering = [];
+    for (var key in filters) {
+      if (filters[key] !== '.')
+        filtering.push(key);
+    }
+
+    const filteredData = [];
+    videoInformationJson.data.map((value, index) => {
+      let isFiltering = true;
+      for (let i in filtering) {
+        const key = filtering[i];
+        if (filters[key] !== value[key]) {
+          isFiltering = false;
+          break;
+        }
+      }
+      if (isFiltering)
+        filteredData.push({ value: value, index: index });
+    });
+
+    this.setState({
+      filters: filters,
+      filtering: filtering,
+      filteredData: filteredData,
+      page: 1,
+      maxPage: filteredData.length / 8
+    });
   }
 
   videoContainerMouseEnter(e) {
@@ -74,7 +108,7 @@ class Footage extends Component {
 
   leftRender() {
     const leftData = {
-      Category: ['landscape', 'cityscape', 'road', 'ocean', 'mountain', 'people'],
+      Category: ['ocean', 'cityscape', 'landscape', 'people', 'road', 'mountain', 'lake river'],
       Drone: ['mavic pro', 'phantom 4 pro', 'inspire'],
       'Frame rate': ['24 fps', '30 fps', '60 fps'],
       Resolution: ['1080p', '4k']
@@ -82,8 +116,9 @@ class Footage extends Component {
 
     const xStyle = {
       verticalAlign: 'middle',
-      width: '18px',
+      width: '12px',
       marginLeft: '10px',
+      marginBottom: '3px',
       cursor: 'pointer'
     };
 
@@ -98,17 +133,26 @@ class Footage extends Component {
               color: '#898888'
             };
 
-            if (this.state[key] === value)
+            if (this.state.filters[key] === value)
               selectedStyle.color = '#000000';
             return (
               <div className="leftContentContainer" key={value}>
                 <p className="b leftContent" style={selectedStyle} onClick={() => { this.setFilter(key, value); }}>{value}</p>
-                {this.state[key] === value ? <img src={image_x} style={xStyle} data-filter={key} onClick={
+                {this.state.filters[key] === value ? <img alt="filterX" src={image_x} style={xStyle} data-filter={key} onClick={
                   (e) => {
-                    const tempState = {};
+                    const tempState = this.state.filters;
                     const filter = $(e.currentTarget).data('filter');
-                    tempState[filter] = '.';
-                    this.setState(tempState);
+                    this.setFilter(filter, '.');
+                    // tempState[filter] = '.';
+                    // const filtering = [];
+                    // for (var key in tempState) {
+                    //   if (tempState[key] !== '.')
+                    //     filtering.push(key);
+                    // }
+                    // this.setState({
+                    //   filters: tempState,
+                    //   filtering: filtering
+                    // });
                   }
                 } /> : ''}
               </div>
@@ -121,42 +165,90 @@ class Footage extends Component {
 
   rightRender() {
     const renderData = [];
-    videoInformationJson.data.map((value, index) => {
-      const data = value;
-      let continueFlag = false;
-      for (const key in this.state) {
-        if (this.state[key] != '.' && this.state[key] !== data[key]) {
-          continueFlag = true;
-        }
-      }
+    const MAXIMUM = 8;
+    const filteredData = [];
+    // 1. 데이터 가공
+    // videoInformationJson.data.map((value, index) => {
+    //   let isFiltering = true;
+    //   for (let i in this.state.filtering) {
+    //     const key = this.state.filtering[i];
+    //     if (this.state.filters[key] !== value[key]) {
+    //       isFiltering = false;
+    //       break;
+    //     }
+    //   }
+    //   if (isFiltering)
+    //     filteredData.push({ value: value, index: index });
+    // });
 
-      if (!continueFlag) {
-        renderData.push(
-          <CSSTransition
-            key={data.title}
-            timeout={500}
-            classNames="fade"
-          >
-            <div className="items" onMouseEnter={this.videoContainerMouseEnter} onMouseLeave={this.videoContainerMouseLeave}>
-              <div className="videoContainer">
-                <video loop muted poster={process.env.PUBLIC_URL + '/video/sample_1.jpeg'}>
-                  <source src={process.env.PUBLIC_URL + data.videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
+    for (let i = (this.state.page - 1) * MAXIMUM; i < this.state.page * MAXIMUM; i++) {
+      if (this.state.filteredData[i] === undefined)
+        break;
+      const data = this.state.filteredData[i].value;
+      const index = this.state.filteredData[i].index;
+      renderData.push(
+        <CSSTransition
+          key={data.title}
+          timeout={500}
+          classNames="fade"
+        >
+          <div className="items" onMouseEnter={this.videoContainerMouseEnter} onMouseLeave={this.videoContainerMouseLeave}>
+            <div className="videoContainer">
+              <video loop muted >
+                <source src={process.env.PUBLIC_URL + '/video/' + data.title + '.mp4'} type="video/mp4" />
+                Your browser does not support the video tag.
               </video>
-              </div>
-              <div className="videoInformationContainer">
-                <Link to={'/detail/' + index}>
-                  <div className="transparent"></div>
-                  <p className="l informationItem price">{data.price} KRW</p>
-                  <p className="l informationItem title">{data.title}</p>
-                  <p className="l informationItem duration"></p>
-                </Link>
-              </div>
             </div>
-          </CSSTransition>
-        );
-      }
-    });
+            <div className="videoInformationContainer">
+              <Link to={'/detail/' + index}>
+                <div className="transparent"></div>
+                <p className="l informationItem price">{data.price} KRW</p>
+                <p className="l informationItem title">{data.title}</p>
+                <p className="l informationItem duration"></p>
+              </Link>
+            </div>
+          </div>
+        </CSSTransition>
+      );
+    }
+
+    // videoInformationJson.data.map((value, index) => {
+    //   const data = value;
+    //   let continueFlag = false;
+    //   for (const key in this.state.filters) {
+    //     if (this.state.filters[key] !== '.' && this.state.filters[key] !== data[key]) {
+    //       continueFlag = true;
+    //     }
+    //   }
+
+    //   if (!continueFlag) {
+    //     renderData.push(
+    //       <CSSTransition
+    //         key={data.title}
+    //         timeout={500}
+    //         classNames="fade"
+    //       >
+    //         <div className="items" onMouseEnter={this.videoContainerMouseEnter} onMouseLeave={this.videoContainerMouseLeave}>
+    //           <div className="videoContainer">
+    //             <video loop muted poster={process.env.PUBLIC_URL + '/video/sample_1.jpeg'}>
+    //               <source src={process.env.PUBLIC_URL + data.videoUrl} type="video/mp4" />
+    //               Your browser does not support the video tag.
+    //           </video>
+    //           </div>
+    //           <div className="videoInformationContainer">
+    //             <Link to={'/detail/' + index}>
+    //               <div className="transparent"></div>
+    //               <p className="l informationItem price">{data.price} KRW</p>
+    //               <p className="l informationItem title">{data.title}</p>
+    //               <p className="l informationItem duration"></p>
+    //             </Link>
+    //           </div>
+    //         </div>
+    //       </CSSTransition>
+    //     );
+    //   }
+    //   return;
+    // });
 
     return (
       <TransitionGroup id="itemContainer">
@@ -165,13 +257,36 @@ class Footage extends Component {
     )
   }
 
+  paging(page){
+    this.setState({
+      page : page
+    });
+  }
+
+  pagingRender() {
+    const render = [];
+    for (let i = 0; i < this.state.maxPage; i++) {
+      if(this.state.page === i+1)
+        render.push(<span className="b pagingText" key={i+1}>{i + 1}</span>);
+      else
+        render.push(<span className="b gray pagingText" key={i+1} onClick={()=>this.paging(i+1)}>{i + 1}</span>);
+    }
+
+    return (
+      <div id="pagingContainer">{render}</div>
+    );
+  }
+
   render() {
 
     return (
       <div className="Footage">
         <div className="marginContainer" id="FootageContinaer">
           <div id="leftContainer">{this.leftRender()}</div>
-          <div id="rightContainer">{this.rightRender()}</div>
+          <div id="rightContainer">
+            {this.rightRender()}
+            {this.pagingRender()}
+          </div>
         </div>
       </div>
     );

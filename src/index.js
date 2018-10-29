@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -15,26 +15,74 @@ import Work from './components/javascript/Work';
 import Header from './components/javascript/_Header';
 import Detail from './components/javascript/Detail';
 import Footer from './components/javascript/_Footer';
+import Cart from './components/javascript/_Cart';
 // ReactDOM.render(<App />, document.getElementById('root'));
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cart: [],
+    }
+    this.addCart = this.addCart.bind(this);
+    this.removeCart = this.removeCart.bind(this);
+  }
+
+  addCart(item) {
+    if (this.state.cart.includes(item))
+      return;
+    this.setState(prevState => ({
+      cart: [...prevState.cart, item]
+    }));
+  }
+
+  removeCart(item) {
+    const index = this.state.cart.indexOf(item);
+    if (index > -1) {
+      const array = [...this.state.cart];
+      array.splice(index, 1);
+      this.setState({
+        cart : array
+      });
+    }
+  }
+
+  componentDidUpdate() {
+  }
+
+  render() {
+    return (
+      <Router>
+        <div style={{ height: '100%' }}>
+          <div id="transparent"></div>
+          <div id="disableScroll">
+            {/* <Route component={Header} /> */}
+            <Route render={(props) => <Header {...props} cart={this.state.cart}/>} />
+            <Switch>
+              <Route exact path="/" component={Main} />
+              <Route path="/about" component={About} />
+              {/* <Route path="/checkout" component={Checkout} /> */}
+              <Route path="/checkout/:id" render={(props) => <Checkout {...props} cart={this.state.cart}/>} />
+
+              <Route path="/contact" component={Contact} />
+              <Route path="/footage" component={Footage} />
+              <Route path="/signin" component={SignIn} />
+              <Route path="/work" component={Work} />
+              {/* <Route path="/detail/:id" component={Detail} /> */}
+              <Route path='/detail/:id' render={(props) => <Detail {...props} addCart={this.addCart} />} />
+              <Route component={NoMatch} />
+            </Switch>
+            <Route component={Footer} />
+          </div>
+          {/* <Route component={Cart} /> */}
+          <Route render={(props) => <Cart {...props} cart={this.state.cart} removeCart={this.removeCart}/>} />
+        </div>
+      </Router>
+    );
+  }
+};
 ReactDOM.render(
-  <Router>
-    <div style={{height : '100%'}}>
-      <Route component={Header} />
-      <Switch>
-        {/* <Route exact path='/' render={(props) => <Main {...props} isMain={true} />} /> */}
-        <Route exact path="/" component={Main} />
-        <Route path="/about" component={About} />
-        <Route path="/checkout" component={Checkout} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/footage" component={Footage} />
-        <Route path="/signin" component={SignIn} />
-        <Route path="/work" component={Work} />
-        <Route path="/detail/:id" component={Detail} />
-        <Route component={NoMatch} />
-      </Switch>
-      <Route component={Footer} />
-    </div>
-  </Router>,
+  <App />,
   document.getElementById('root')
 );
 
