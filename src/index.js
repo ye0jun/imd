@@ -23,9 +23,17 @@ class App extends Component {
     super(props);
     this.state = {
       cart: [],
+      more : false
     }
     this.addCart = this.addCart.bind(this);
     this.removeCart = this.removeCart.bind(this);
+    this.setMore = this.setMore.bind(this);
+  }
+
+  setMore(value){
+    this.setState({
+      more : value
+    });
   }
 
   addCart(item) {
@@ -48,6 +56,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
+    console.log(this);
   }
 
   render() {
@@ -56,25 +65,21 @@ class App extends Component {
         <div style={{ height: '100%' }}>
           <div id="transparent"></div>
           <div id="disableScroll">
-            {/* <Route component={Header} /> */}
-            <Route render={(props) => <Header {...props} cart={this.state.cart}/>} />
+            <Route render={(props) => <Header {...props} cart={this.state.cart} more={this.state.more} setMore={this.setMore}/>}/>
             <Switch>
               <Route exact path="/" component={Main} />
               <Route path="/about" component={About} />
-              {/* <Route path="/checkout" component={Checkout} /> */}
               <Route path="/checkout/:id" render={(props) => <Checkout {...props} cart={this.state.cart}/>} />
-
               <Route path="/contact" component={Contact} />
               <Route path="/footage" component={Footage} />
               <Route path="/signin" component={SignIn} />
-              <Route path="/work" component={Work} />
-              {/* <Route path="/detail/:id" component={Detail} /> */}
+              {/* <Route path="/work" component={Work} /> */}
+              <Route path='/work' render={(props) => <Work {...props} more={this.state.more} setMore={this.setMore} />} />
               <Route path='/detail/:id' render={(props) => <Detail {...props} addCart={this.addCart} />} />
               <Route component={NoMatch} />
             </Switch>
             <Route component={Footer} />
           </div>
-          {/* <Route component={Cart} /> */}
           <Route render={(props) => <Cart {...props} cart={this.state.cart} removeCart={this.removeCart}/>} />
         </div>
       </Router>

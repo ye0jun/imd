@@ -57,6 +57,12 @@ class Footer extends Component {
       bottom : '0px'
     };
 
+    if(this.state.pathName === '/work')
+      footerPositionStyle.display = 'none';
+    else
+      footerPositionStyle.display = 'block';
+
+
     return (
       <div className="Footer" style={footerPositionStyle}>
         <div className="marginContainer" id="container">

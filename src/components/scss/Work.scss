@@ -1,0 +1,189 @@
+.Work {
+  #container {
+    display: flex;
+    height: 100%;
+    min-height: 700px;
+    flex-wrap: wrap;
+    #leftContainer {
+      width: 15%;
+      height: 700px;
+      position: relative;
+      #namedProjectContainer {
+        position: absolute;
+        top: 80px;
+        width: 100%;
+        .text {
+          font-size: 30px;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      #left-videoTextContainer {
+        position: absolute;
+        top: 200px;
+        display: inline-block;
+        overflow: hidden;
+        #left-videoText {
+          position: absolute;
+          top: 0px;
+        }
+      }
+      #left-videoPageContainer {
+        position: absolute;
+        top: 280px;
+        display: flex;
+        width: 100%;
+        overflow: hidden;
+        #left-videoPage {
+          top: 0px;
+        }
+      }
+      .leftEtc {
+        display: inline-block;
+        color: #898888;
+      }
+    }
+    #centerContainer {
+      width: 30%;
+      height: 700px;
+      position: relative;
+      #titleContainer {
+        width: 100%;
+        top: 200px;
+        position: absolute;
+        .title {
+          width: 100%;
+          display: flex; // height: 70px;
+        }
+      }
+      #seeMore {
+        cursor: pointer;
+        border: solid 1.5px #898888;
+        position: absolute;
+        top: 550px;
+        width: 70%;
+        height: 60px;
+        color: #898888;
+        p {
+          font-size: 17px;
+          text-align: center;
+          line-height: 60px;
+        }
+      }
+    }
+    #rightContainer {
+      width: 55%;
+      height: 700px;
+      #imageContainer {
+        margin-top: 80px;
+        margin-left: 10%;
+        width: 90%;
+        height: 400px;
+        float: right;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        .smallImageContainer {
+          width: 50%;
+          height: 80%;
+          align-self: center;
+          overflow: hidden;
+          position: relative
+        }
+        .smallImageAnimation {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          position: absolute;
+        }
+        .gradient{
+          background: #002246;
+        }
+        .gradient::after{
+          background: linear-gradient(180deg, rgba(20,9,55,.1) 0,rgba(20,9,55,0));
+          bottom: 0;
+          content: "";
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+          z-index: 2;
+        }
+        
+        .smallImage {
+          object-fit: cover;
+          background-position: 50% center;
+          position: absolute;
+          background-size: cover;
+        }
+      }
+      #arrowContainer {
+        margin-top: 90px;
+        float: right;
+        img {
+          cursor: pointer;
+          width: 30px;
+        }
+        img:first-child {
+          margin-right: 30px;
+        }
+      }
+    }
+    #additionalContainer {
+      display: none;
+      opacity: 0;
+      width: 100%;
+      .Container {
+        width: 100%;
+        display: flex;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+        .title {
+          width: 15%;
+          font-size: 30px;
+        }
+        .content {
+          width: 85%;
+          color: #898888;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  #stillContainer {
+    display: none;
+    opacity: 0;
+    width: 100%;
+    position: relative;
+    margin: 100px 0px;
+    overflow: hidden;
+    .line {
+      min-width: 100%;
+      height: 300px;
+      display: inline-block;
+      .zoomableImageContainer {
+        width: 36%;
+        height: 300px;
+        position: absolute;
+        overflow: hidden;
+
+        .zoomableImage{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  #stillContainer :first-child {
+    margin-bottom: 5px;
+  }
+  #imageBig {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 0px;
+    height: 0px;
+    object-fit: cover;
+  }
+}
