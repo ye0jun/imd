@@ -2,16 +2,28 @@
   ul{
     list-style-type: none;
     padding: 0;
-    color: #a7a7a7;
+    color: #000;
+    .bodyText{
+      font-size: 20px;
+      color: #a7a7a7;
+      line-height: 1.5em;
+    }
   }
   .section1{
     position: fixed;
     top: 0;
     width: 100%;
     z-index: -10;
+    overflow: hidden;
     h1{
       color: #000;
-      margin-top:200px;
+      margin-top:140px;
+    }
+    .sectionCover{
+      background-color: rgba(0, 0, 0, 0);
+      position: absolute;
+      width: 100%;
+      height: 100%;
     }
   }
   .bgWhite{
@@ -25,18 +37,20 @@
     display: flex;
     .img1{
       flex: 1;
-      height: 37vw;
-      background-image: url(../resource/image/dummy.png);
+      width: 36vw;
+      background-image: url(../resource/image/about1.jpg);
+      background-position: center;
       background-size:cover;
       margin-right: 8px;
     }
     .img2{
       flex: 1;
-      width: 37vw;
+      width: 36vw;
       margin-left: 8px;
       height: 40vw;
-      background-image: url(../resource/image/dummy.png);
+      background-image: url(../resource/image/about2.jpg);
       background-size:cover;
+      background-position: center;
     }
   }
   .videoSize{
@@ -44,6 +58,20 @@
     margin-top: 1080px;
     height: 640px;
     overflow: hidden;
+    #videoOverlay{
+      background-color: rgba(0, 0, 0, 0.65);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .playBtn{
+        color: blue;
+        font-size: 40px;
+        z-index: 100;
+      }
+    }
     .videoLayer {
       height: 640px;
       width: 100%;
@@ -65,35 +93,71 @@
     }
   }
   .serviceContent{
-    display: inline-block;
-    width: 25%;
+    float: left;
+    width: 300px;
   }
-  .galleryImg{
-    margin: 16px 8px;
-    background-color: red;
-    height: auto;
-    width: 100%;
-    display: inline-block;
-    img{
-      width: auto;
-      height: 360px;
+  .section4{
+    clear: both;
+    .marginTop{
+      padding-top: 200px;
     }
   }
   .gallery{
+    clear: both;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    .top{
+      vertical-align: baseline;
+      transform: translate3d(-100px, 0, 0);
+    }
+    .bottom{
+      vertical-align: baseline;
+      transform: translate3d(-400px, 0, 0);
+    }
     .imgList{
-      width: 100%;
-      height: 500px;
-      overflow: hidden;
+      height: 300px;
+      width: 120vw;
       display: flex;
-      .top{
-        height: 360px;
-        vertical-align: baseline;
+      padding: 8px;
+
+      .image{
+        margin: 0 8px;
+        display: inline-block;
+        width: 40vw;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
       }
-      .bottom{
-        height: 360px;
-        vertical-align: baseline;
+      .image1{
+        background-image: url(../resource/image/image1.jpg);
+      }
+      .image2{
+        background-image: url(../resource/image/image2.jpg);
+      }
+      .image3{
+        background-image: url(../resource/image/image3.jpg);
+      }
+      .image4{
+        background-image: url(../resource/image/image4.jpg);
+      }
+      .image5{
+        background-image: url(../resource/image/image5.jpg);
+      }
+      .image6{
+        background-image: url(../resource/image/image6.jpg);
+      }
+      .image7{
+        background-image: url(../resource/image/image7.jpg);
       }
     }
     }
-  
+  .personalFootage{
+    margin-top: 300px;
+    margin-bottom: 520px;
+    .footageContents{
+      float: left;
+      width: 300px;
+    }
+  }
 }

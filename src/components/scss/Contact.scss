@@ -1,0 +1,29 @@
+#contact{
+  .askContainer{
+  font-size: 48px;
+  margin-top: 200px;
+  }
+
+  .askName{
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  .cover{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+  }
+  .b{
+    font-size: 40px;
+    border: none;
+  }
+  .inputStyle{
+    border-bottom:2px solid #000;
+    width: 595px;
+    display: block;
+  }
+}

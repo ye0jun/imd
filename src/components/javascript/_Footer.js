@@ -1,4 +1,3 @@
-/* eslint-disable */ 
 import React, { Component } from 'react';
 import '../scss/_Footer.scss';
 import Visa from '../resource/image/visa.png';
@@ -29,6 +28,7 @@ class Footer extends Component {
   }
 
   componentDidUpdate(){
+    console.log('footer render');
     const pathName = this.props.location.pathname;
     if(pathName != this.state.pathName){
       this.setState({
