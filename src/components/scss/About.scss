@@ -2,7 +2,12 @@
   ul{
     list-style-type: none;
     padding: 0;
-    color: #a7a7a7;
+    color: #000;
+    .bodyText{
+      font-size: 20px;
+      color: #a7a7a7;
+      line-height: 1.5em;
+    }
   }
   .section1{
     position: fixed;
@@ -88,10 +93,17 @@
     }
   }
   .serviceContent{
-    display: inline-block;
-    width: 25%;
+    float: left;
+    width: 300px;
+  }
+  .section4{
+    clear: both;
+    .marginTop{
+      padding-top: 200px;
+    }
   }
   .gallery{
+    clear: both;
     width: 100vw;
     overflow: hidden;
     position: relative;
@@ -140,5 +152,12 @@
       }
     }
     }
-  
+  .personalFootage{
+    margin-top: 300px;
+    margin-bottom: 520px;
+    .footageContents{
+      float: left;
+      width: 300px;
+    }
+  }
 }
