@@ -7,6 +7,7 @@ import image_next from '../resource/image/forward.png';
 import workJson from '../resource/json/Work.json';
 import $ from 'jquery';
 import anime from 'animejs';
+import Plyr from 'plyr';
 
 class Work extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Work extends Component {
 
     this.state = {
       current: 0,
-      max: 2,
+      max: 4,
       currentMore: false,
     };
 
@@ -76,7 +77,7 @@ class Work extends Component {
       let lastShowAnimation;
       delay = 0;
       for (let i = 0; i < 2; i++) {
-        $($('.smallImage')[i]).css('background-image', 'url("/image/work/' + next + "/" + 0 + '.jpg")');
+        $($('.smallImage')[i]).css('background-image', 'url("/image/work/' + next + "/" + 0 + '.png")');
         const showAnimationOption = {
           targets: [],
           top: ['100%', '0%'],
@@ -138,7 +139,7 @@ class Work extends Component {
       delay = 0;
       let lastShowAnimation;
       for (let i = 0; i < 2; i++) {
-        $($('.smallImage')[i]).css('background-image', 'url("/image/work/' + next + "/" + 0 + '.jpg")');
+        $($('.smallImage')[i]).css('background-image', 'url("/image/work/' + next + "/" + 0 + '.png")');
         const showAnimationOption = {
           targets: [],
           top: ['-100%', '0%'],
@@ -225,6 +226,9 @@ class Work extends Component {
     if (this.transforming)
       return;
 
+    if (this.player !== undefined)
+      this.player.stop();
+
     $(this.refs.animationObject4).show();
     $(this.refs.animationObject5).show();
     let delay = 0;
@@ -288,6 +292,64 @@ class Work extends Component {
     }
   }
 
+  bigVideoSetting() {
+    if (this.myCurrent === this.state.current)
+      return;
+
+    if (this.state.current === 3) {
+      this.player = undefined;
+      return;
+    }
+
+    $('#imageBig').width($('#rightContainer').width() + 64);
+    $('#imageBig').height($('.Header').height() + 480);
+    $('#imageBig').css('z-index', 3);
+    this.imageBigTop = -$('#imageBig').height();
+    $('#imageBig').css('top', this.imageBigTop);
+
+    if (this.player === undefined) {
+      this.player = new Plyr('#player', {
+        // controls : ['play-lar ge', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen']	
+        // controls: ['play-large']
+      });
+    }
+
+
+    this.player.source = {
+      type: 'video',
+      sources: [
+        {
+          src: process.env.PUBLIC_URL + "/video/work" + this.state.current + ".mp4",
+          type: 'video/mp4',
+          // size: 720,
+        },
+      ],
+      poster: process.env.PUBLIC_URL + "/image/work/" + this.state.current + "/0.png",
+    };
+
+    $('#imageBig .plyr').height('100%');
+    $('#imageBig .plyr').css('background', 'white');
+
+    $('#imageBig .plyr .plyr__video-wrapper').height('100%');
+    $('#imageBig .plyr .plyr__video-wrapper').css('background', 'white');
+    $('#imageBig .plyr .plyr__video-wrapper video').height('100%');
+    $('#imageBig .plyr .plyr__video-wrapper video').width('100%');
+
+    if(this.state.current !== 2){
+      $('#imageBig .plyr .plyr__video-wrapper video').css('object-fit', 'cover');
+    }
+    else{
+      $('#imageBig .plyr .plyr__controls').css('width','59%');
+      $('#imageBig .plyr .plyr__controls').css('left','20.5%');
+    }
+      
+    setTimeout(() => {
+      $($('#imageBig .plyr').get(0)).addClass('plyr--hide-controls');
+    }, 1000);
+
+    this.myCurrent = this.state.current;
+  }
+
   componentDidUpdate() {
     if (this.state.currentMore != this.props.more) {
       if (!this.props.more) {
@@ -297,6 +359,7 @@ class Work extends Component {
         currentMore: this.props.more
       });
     }
+    this.bigVideoSetting();
   }
 
   componentDidMount() {
@@ -317,10 +380,12 @@ class Work extends Component {
     $('#smallImageRight').css('left', (-imageContainerWidth / 2) + 'px');
 
     //big image setting
-    $('#imageBig').width($('#rightContainer').width() + 64);
-    $('#imageBig').height($('.Header').height() + 480);
-    this.imageBigTop = -$('#imageBig').height();
-    $('#imageBig').css('top', this.imageBigTop);
+    // $('#imageBig').width($('#rightContainer').width() + 64);
+    // $('#imageBig').height($('.Header').height() + 480);
+    // this.imageBigTop = -$('#imageBig').height();
+    // $('#imageBig').css('top', this.imageBigTop);
+
+    this.bigVideoSetting();
 
     //zoom
     const zoomMount = [0.25, 0.75, 0.4, 0.6, 0.9, 0.3, 0.4];
@@ -331,11 +396,17 @@ class Work extends Component {
       const scrollEnd = stillVisible + 713;
 
       for (let i = 0; i < 7; i++) {
-        const percent = (713 - (scrollEnd - scrollVisible)) / 713;
+        const percent = 1 - ((713 - (scrollEnd - scrollVisible)) / 713);
         const scale = 1 + (zoomMount[i] * percent);
         $(zoomableImage[i]).css('transform', 'scale(' + scale + ')');
       }
-    })
+    });
+
+    // this.bigVideoSetting();
+
+    // $('#imageBig').width($('#rightContainer').width() + 64);
+    // $('#imageBig').height($('.Header').height() + 480);
+    // this.imageBigTop = -$('#imageBig').height();
   }
 
   stillRender() {
@@ -345,7 +416,7 @@ class Work extends Component {
     for (let i = 0; i < 4; i++) {
       firstLine.push(
         <div className="zoomableImageContainer firstImageLine" key={"ZIC" + i}>
-          <img className="zoomableImage" src={process.env.PUBLIC_URL + "/image/work/" + this.state.current + "/" + i + ".jpg"} />
+          <img className="zoomableImage" src={process.env.PUBLIC_URL + "/image/work/" + this.state.current + "/" + i + ".png"} />
         </div>
       )
       if (i > 2)
@@ -353,7 +424,7 @@ class Work extends Component {
 
       secondLine.push(
         <div className="zoomableImageContainer secondImageLine" key={"ZIC" + i + 4}>
-          <img className="zoomableImage" src={process.env.PUBLIC_URL + "/image/work/" + this.state.current + "/" + (i + 4) + ".jpg"} />
+          <img className="zoomableImage" src={process.env.PUBLIC_URL + "/image/work/" + this.state.current + "/" + (i + 4) + ".png"} />
         </div>
       )
     }
@@ -368,6 +439,25 @@ class Work extends Component {
       </div>
     )
     return output;
+  }
+
+  bigRender() {
+    const current = this.state.current;
+    const output_image = <img id="imageBig" onClick={this.seeMoreClose} ref="animationObject6" src={process.env.PUBLIC_URL + "/image/work/" + current + "/0.png"} />;
+    // const output_video = <video id="imageBig" ref="animationObject6" src={process.env.PUBLIC_URL + "/video/work" + current + ".mp4"} refs="bigVideo"/>;
+    const output_video = (
+      <div id="imageBig" ref="animationObject6">
+
+        <video id="player" style={{ width: '100%', height: '100%', }}>
+          <source src={process.env.PUBLIC_URL + "/video/work" + current + ".mp4"} type="video/mp4" />
+        </video>
+      </div>
+    );
+
+    if (current < 3)
+      return output_video;
+    else
+      return output_image;
   }
 
   render() {
@@ -415,14 +505,14 @@ class Work extends Component {
               <div className="smallImageContainer">
                 <div className="ib smallImageAnimation gradient" ref="animationObject2">
                   <div className="smallImage" id="smallImageLeft" style={{
-                    backgroundImage: 'url("/image/flying football stadium.jpg")',
+                    backgroundImage: 'url("/image/work/0/0.png")',
                   }} />
                 </div>
               </div>
               <div className="smallImageContainer" style={{ height: '100%' }}>
                 <div className="ib smallImageAnimation" ref="animationObject3">
                   <div className="smallImage" id="smallImageRight" style={{
-                    backgroundImage: 'url("/image/flying football stadium.jpg")'
+                    backgroundImage: 'url("/image/work/0/0.png")',
                   }} />
                 </div>
               </div>
@@ -447,7 +537,8 @@ class Work extends Component {
           </div>
         </div>
         {this.stillRender()}
-        <img id="imageBig" onClick={this.seeMoreClose} ref="animationObject6" src={process.env.PUBLIC_URL + "/image/flying football stadium.jpg"} />
+        {/* <img id="imageBig" onClick={this.seeMoreClose} ref="animationObject6" src={process.env.PUBLIC_URL + "/image/work/" + this.state.current + "/0.png"} /> */}
+        {this.bigRender()}
       </div>
     );
   }

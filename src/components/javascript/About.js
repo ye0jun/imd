@@ -41,7 +41,6 @@ class About extends Component {
         $('.imgContainer').css('display', 'flex');
       }
       else {
-        console.log(topScroll);
         let topValue = 100 - (0.1 * topScroll) + 'px';
         let bottomValue = -(400 - (0.1 * topScroll)) + 'px';
         let imgs = document.querySelector('.imgContainer');

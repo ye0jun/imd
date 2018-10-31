@@ -2,20 +2,38 @@
   "data" : [
     {
       "firstSubjectLine" : "Nomad",
-      "secondSubjectLine": "Project",
-      "firstTitleLine"   : "a light on",
-      "secondTitleLine"  : "performance",
-      "about" : "This is about & This is about & This is about & This is about &This is about &This is about &",
-      "detail" : "This is detail",
+      "secondSubjectLine": "project",
+      "firstTitleLine"   : "land of hope",
+      "secondTitleLine"  : "serengeti",
+      "about" : "The serengeti, east africa's eternal paradise, with its endless expanses and wild animals, makes one feel as though evokes a sense of having arrived in an apparently peaceful corner of the world.Serengeti ecosystem is a geographical region in Africa. I captured the moment in the land of hope. We spent time in tarengeri, ngorongoro and serengeti.",
+      "detail" : "All video filmed with sony mirrorless camera for 5 days. I directed, filmed and edited.",
       "images" : 6
     },
     {
-      "firstSubjectLine" : "hello",
-      "secondSubjectLine": "world",
-      "firstTitleLine"   : "programmatic",
-      "secondTitleLine"  : "solution",
-      "about" : "This is about & This is about & This is about & This is about &This is about &This is about & This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &This is about & This is about & This is about & This is about &This is about &This is about &",
-      "detail" : "This is detail",
+      "firstSubjectLine" : "DKU",
+      "secondSubjectLine": "perfomance",
+      "firstTitleLine"   : "movement in",
+      "secondTitleLine"  : "silence",
+      "about" : "This is dankook university modern dance performance project, majoring in doctor’s course. ‘Untitled' is a short dance film starring professor Kim that expresses a raw and hazy ambience, mood and energy of contemporary dance presented in one, uninterrupted shot. with different showing each 5 people, they express each emotional movement.",
+      "detail" : "All video filmed with sony mirrorless camera and dji mavic pro. I filmed second cut and drone footage.",
+      "images" : 6
+    },
+    {
+      "firstSubjectLine" : "WKorea",
+      "secondSubjectLine": "award",
+      "firstTitleLine"   : "woman and ",
+      "secondTitleLine"  : "sports",
+      "about" : "2018 Wkorea and nike collaboration video awards, 2018 videosearch. The film concept is woman and sports, which can show woman’s strength and toughness. in the beginning of video, I insert audio  the word in a pejorative sense used by minister then appear copy Is she? for homonym with shh. with copy, overall mood show woman’s strength in sports.",
+      "detail" : "All video filmed with sony mirrorless camera and dji mavic pro. I directed, filmed and edited.",
+      "images" : 6
+    },
+    {
+      "firstSubjectLine" : "Kakao",
+      "secondSubjectLine": "friends",
+      "firstTitleLine"   : "kakaofriends",
+      "secondTitleLine"  : "summer days",
+      "about" : "This project launched for kakaofriends online shopping mall in us. using summer items. project concept was not focusing on product but mood. Like social media's post like instagram, photography should be shown kind of natural. We casted surf beach in yang yang looks like exotic place and express its natural mood.",
+      "detail" : "All photography took with canon 5 mark 3. I directed all photography scene, casting location",
       "images" : 6
     }
   ]
