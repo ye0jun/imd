@@ -1,4 +1,3 @@
-/* eslint-disable */ 
 import React, { Component } from 'react';
 import '../scss/About.scss';
 import aboutVideo from '../resource/video/about.mp4';
@@ -57,7 +56,6 @@ class About extends Component {
       width: '100vw',
       marginTop: '-9%'
     }
-    let a = 0;
     let playVideo = a.map(function(){
       if (a % 2 === 0){
         $('#videoOverlay').css('backgroundColor', `rgba(0, 0, 0, 0)`);
@@ -137,22 +135,11 @@ class About extends Component {
 
           <div className="section4">
             <div className="gallery">
-<<<<<<< HEAD
               <div className="imgList top" id='top'>
                 <div className="image image1"></div>
                 <div className="image image2"></div>
                 <div className="image image3"></div>
                 <div className="image image4"></div>
-=======
-              <div className="imgList top">
-                {mainJson.gallery.map((gallery, i) => {
-                  if ( i < 3 ){
-                    return (
-                      <img alt="sample" key={i} src={'..'+gallery.imgUrl} className="galleryImg"></img>
-                    );
-                  }
-                })}
->>>>>>> ad198e8501367d60ba0aa2c7dd78a5e69fbcdbf9
               </div>
             </div>
             <div className="gallery">
