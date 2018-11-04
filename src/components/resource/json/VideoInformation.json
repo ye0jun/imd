@@ -3,6 +3,7 @@
     {
       "title": "Iceberg in Iceland",
       "location": "vik, Iceland",
+      "description" : "the place strings endless series of epic landscapes",
       "year": 2017,
       "video": [
         25,
@@ -14,6 +15,7 @@
     {
       "title": "Univ music festival",
       "location": "seoul, Korea",
+      "description" : "spectacular performances with enthusiastic crowds in korea",
       "year": 2017,
       "video": [
         72,
@@ -25,6 +27,7 @@
     {
       "title": "Flying the ocean",
       "location": "cancun, Mexico",
+      "description" : "most beautiful island with shining ocean",
       "year": 2017,
       "video": [
         53,
@@ -36,6 +39,7 @@
     {
       "title": "Night view in budapest",
       "location": "budapest, Hungary",
+      "description" : "everything turns orange with perfect night view in budapest",
       "year": 2017,
       "video": [
         8,

@@ -225,7 +225,7 @@ class Main extends Component {
     $('#absolute-text1').text($($(e.currentTarget).find('p')[0]).text());
     $('#absolute-text2').html($($(e.currentTarget).find('p')[1]).html());
     $('#curated-information-text-title').text(curatedData.title);
-    $('#curated-information-text-location').text(curatedData.location);
+    $('#curated-information-text-location').text(curatedData.description);
     $('#curatedVideoContainer').show();
 
     // calculate start //

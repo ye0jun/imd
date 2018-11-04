@@ -209,7 +209,7 @@ class About extends Component {
 
           <div className="personalFootage marginContainer marginTop section3">
             <h1 className="b">Process</h1>
-            <p className="l bodyText">We believe that structure empowers creativity. The 12 notes of the musical scale. The 26 letters in the alphabet. The 256 colors in the RGB digital color spectrum. All structural systems used to unlock the vast creativity of music, literature, and visual communication. The foundation to our methodology is the belief that creativity used in conjunction with sound strategic thinking can solve any problem. Built to adapt to each project’s unique circumstances, our process begins with conversation, insight, and research. Driven by our client’s aspirations and business objectives, our tailored approach allows us to focus on creating impactful and effective design solutions.</p>
+            <p className="l bodyText">We believe that structure empowers creativity. The 12 notes of the musical scale. The 26 letters in the alphabet. The 256 colors in the RGB digital color spectrum. All structural systems used to unlock the vast creativity of music, literature, and visual communication. The foundation to our methodology is the belief that creativity used in conjunction with sound strategic thinking can solve any problem. Built to adapt to each project’s unique circumstances, our process begins with conversation, insight, and research. </p>
           </div>
           <div className="client">
             <h1 className="b">Clients</h1>
