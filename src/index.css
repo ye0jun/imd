@@ -65,16 +65,17 @@ code {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 36px;
   color: #000;
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 28px;
 }
 
 .bodyText {
-  font-size: 24px;
+  font-size: 20px;
+  line-height: 1.5em;
 }
 
 .marginContainer {
