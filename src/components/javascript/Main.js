@@ -10,6 +10,7 @@ import image_next from '../resource/image/next.png';
 import ScrollReveal from 'scrollreveal'
 import $ from 'jquery';
 import anime from 'animejs';
+import { Link } from 'react-router-dom'
 
 
 const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
@@ -20,13 +21,15 @@ class Main extends Component {
       returnPosition: undefined,
       standard: undefined,
       currentCurated : -1,
+      currentCuratedVideoIndex : 0,
       absoluteShow : '#secondAbsoluteVideoContainer',
       absoluteHide : '#firstAbsoluteVideoContainer'
     };
   }
 
   componentDidMount() {
-
+    // this.disableScroll();
+    this.enableScroll();
     const srVideoOption = {
       reset: false,
       delay: 200,
@@ -164,19 +167,14 @@ class Main extends Component {
       next = total;
     else if(next > total)
       next = 1; 
-
     
     this.makeCuratedPageNumber(next,this.state.currentCurated);
     const curatedData = videoInformationJson.curated[this.state.currentCurated];
     const soonShowVideoObject = $(this.state.absoluteShow).find('video')[0];
-    // console.log(videoInformationJson.data[curatedData.video[next-1]].title);
-    console.log(next);
+
     $(soonShowVideoObject).html('<source src="' + process.env.PUBLIC_URL + '/video/'+ videoInformationJson.data[curatedData.video[next-1]].title +'.mp4" type="video/mp4"></source>');
     $(soonShowVideoObject)[0].load();
     $(soonShowVideoObject)[0].play();
-    // $($(this.state.absoluteHide).find('video')[0]).html('<source src="' + process.env.PUBLIC_URL + '/video/'+ videoInformationJson.data[curatedData.video[next-1]].title +'.mp4" type="video/mp4"></source>');
-    // $($(this.state.absoluteHide).find('#absoluteVideo')[0])[0].load();
-    // $($(this.state.absoluteHide).find('#absoluteVideo')[0])[0].play();
 
     $(this.state.absoluteHide).css('zIndex',-11);
     $(this.state.absoluteShow).css('zIndex',-10);
@@ -187,22 +185,14 @@ class Main extends Component {
       easing: 'linear'
     };
 
-    // const animeHideOption = {
-    //   targets: this.state.absoluteHide,
-    //   opacity: [1, 0],
-    //   duration: 1000,
-    //   easing: 'linear'
-    // };
-
-    // $(this.state.absoluteHide).zIndex();
-    // $(this.state.absoluteShow).zIndex();
     anime(animeShowOption);
-    // anime(animeHideOption);
+
 
     const temp = this.state.absoluteShow;
     this.setState({
       'absoluteShow' : this.state.absoluteHide,
-      'absoluteHide' : temp
+      'absoluteHide' : temp,
+      'currentCuratedVideoIndex' : curatedData.video[next-1]
     });
   }
 
@@ -220,7 +210,8 @@ class Main extends Component {
     const curatedData = videoInformationJson.curated[curatedIndex];
     this.makeCuratedPageNumber(1,curatedIndex);
     this.setState({
-      currentCurated : curatedIndex
+      currentCurated : curatedIndex,
+      currentCuratedVideoIndex : curatedData.video[0]
     });
 
 
@@ -419,7 +410,7 @@ class Main extends Component {
           <span className="b" id="curated-information-text-location">Vik, Iceland zoom in footage</span>
           {/* <div id="curated-information-textContainer">
           </div> */}
-          <div id="curated-buyButton"><p className="b">buy</p></div>
+          <div id="curated-buyButton"><Link style={{textDecoration : 'none', color : 'white'}}to={"/checkout/" + this.state.currentCuratedVideoIndex}><p className="b">buy</p></Link></div>
           <div id="curated-X" onClick={() => { this.closeCurated() }}><img src={image_x} /></div>
           <div id="curated-paging"><span id="curated-paging-text">1 / 5</span></div>
           <div id="curated-information-buttonContainer">
@@ -489,12 +480,6 @@ class Main extends Component {
   }
 
   render() {
-    // const contentVideStyle = {
-    //   position: 'relative',
-    //   width: '100%',
-    //   height: '340px',
-    //   objectFit: 'cover'
-    // }
     return (
       <div className="Main">
         {this.curatedVideoRender()}
@@ -507,48 +492,6 @@ class Main extends Component {
         <div id="mainContainer">
           <p className="b" style={{ marginBottom: '0px' }}>Curated Collection</p>
           {this.curatedRender()}
-          {/* {mainJson.data.map((data, i) => {
-            const contentContainerStyle = {
-              width: '640px',
-              marginTop: '120px'
-            }
-
-            if (i % 2 === 0) {
-              contentContainerStyle.marginLeft = '11%';
-              contentContainerStyle.marginRight = 'auto';
-            }
-            else {
-              contentContainerStyle.marginRight = '11%';
-              contentContainerStyle.marginLeft = 'auto';
-            }
-
-            return (
-              <div className="contentContainer" key={i} style={contentContainerStyle}>
-                <div className="videoContainer videoAnimate" id={'videoAnimate' + i} style={{ height: '340px' }} onClick={(e) => { this.openCurated(e) }} onMouseEnter={this.videoContainerMouseEnter} onMouseLeave={this.videoContainerMouseLeave}>
-                  <video autoPlay loop muted style={contentVideStyle}>
-                    <source src={mainVideo} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                  <div className="videoHoverContainer">
-                    <div className="videoHover-background"></div>
-                    <div className="videoHover-textContainer">
-                      <p className="b margin0" style={{ color: 'white' }}>{data.title}</p>
-                      <p className="b margin0" style={{ color: 'white', fontSize: '15px' }}><img src={videoIcon} alt="video icon" style={{ width: '12px', verticalAlign: 'middle' }}></img>  {data.count} Video</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="informationContainer">
-                  <div className="information-firstLine">
-                    <p className="b margin0" style={{ textAlign: 'left' }}>{data.title}</p>
-                    <div style={{ flexGrow: '100', position: 'relative' }} className='informationSubText'>
-                      <p className="b margin0" style={{ position: 'absolute', bottom: '0px', right: '0px' }}>{data.year}</p>
-                    </div>
-                  </div>
-                  <p className="b margin0 informationSubText" style={{ textAlign: 'left' }}>{data.location}</p>
-                </div>
-              </div>
-            );
-          })} */}
         </div>
       </div>
     );

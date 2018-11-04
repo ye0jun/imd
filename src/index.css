@@ -114,3 +114,7 @@ h2 {
    user-select: none;          /* Non-prefixed version, currently 
                                   not supported by any browser */
 }
+
+.plyr__control--overlaid{
+  background : rgba(0, 0, 0, .8)
+}

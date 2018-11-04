@@ -296,16 +296,17 @@ class Work extends Component {
     if (this.myCurrent === this.state.current)
       return;
 
-    if (this.state.current === 3) {
-      this.player = undefined;
-      return;
-    }
-
     $('#imageBig').width($('#rightContainer').width() + 64);
     $('#imageBig').height($('.Header').height() + 480);
     $('#imageBig').css('z-index', 3);
     this.imageBigTop = -$('#imageBig').height();
     $('#imageBig').css('top', this.imageBigTop);
+
+    if (this.state.current === 3) {
+      this.player = undefined;
+      return;
+    }
+
 
     if (this.player === undefined) {
       this.player = new Plyr('#player', {
@@ -379,12 +380,6 @@ class Work extends Component {
     $('#smallImageLeft').css('top', '-12.5%');
     $('#smallImageRight').css('left', (-imageContainerWidth / 2) + 'px');
 
-    //big image setting
-    // $('#imageBig').width($('#rightContainer').width() + 64);
-    // $('#imageBig').height($('.Header').height() + 480);
-    // this.imageBigTop = -$('#imageBig').height();
-    // $('#imageBig').css('top', this.imageBigTop);
-
     this.bigVideoSetting();
 
     //zoom
@@ -444,7 +439,6 @@ class Work extends Component {
   bigRender() {
     const current = this.state.current;
     const output_image = <img id="imageBig" onClick={this.seeMoreClose} ref="animationObject6" src={process.env.PUBLIC_URL + "/image/work/" + current + "/0.png"} />;
-    // const output_video = <video id="imageBig" ref="animationObject6" src={process.env.PUBLIC_URL + "/video/work" + current + ".mp4"} refs="bigVideo"/>;
     const output_video = (
       <div id="imageBig" ref="animationObject6">
 
@@ -474,14 +468,14 @@ class Work extends Component {
               }} />
             </div>
             <div id="left-videoTextContainer">
-              <span id="left-videoText" className="leftEtc" ref="animationObject0">Video</span>
+              <span id="left-videoText" className="leftEtc l" style={{width : '50px'}} ref="animationObject0">Video</span>
             </div>
             <div id="left-videoPageContainer">
-              <div ref="animationObject1" style={{ display: 'flex', width: '100%', position: 'absolute' }}>
+              <div ref="animationObject1" style={{ display: 'flex', width: '100%', position: 'absolute'}}>
                 <AnimationText onRef={ref => (this.child3 = ref)} text={[1, 2, 3, 4, 5, 6, 7, 8, 9]} option={{
                   fontSize: '15px', color: '#898888'
                 }} />
-                <span id="left-videoPage" className="leftEtc">&nbsp;/ 5</span>
+                <span id="left-videoPage" className="leftEtc l"><span style={{fontFamily : 'Roboto'}}>&nbsp;/</span> 4</span>
               </div>
             </div>
           </div>

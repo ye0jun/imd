@@ -25,6 +25,8 @@ class Header extends Component {
   componentDidUpdate() {
     const pathName = this.props.location.pathname;
     if (this.state.pathName !== pathName) {
+      let headerPositionStyle = (pathName === '/') ? 'absolute' : 'relative';
+      if(pathName === '/about') headerPositionStyle = 'fixed';
       this.setState({
         position: pathName === '/' ? 'absolute' : 'relative',
         zIndex: pathName === '/' ? '1' : '0',

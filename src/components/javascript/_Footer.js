@@ -57,7 +57,7 @@ class Footer extends Component {
       bottom : '0px'
     };
 
-    if(this.state.pathName === '/work')
+    if(this.state.pathName === '/work' || this.state.pathName === '/contact')
       footerPositionStyle.display = 'none';
     else
       footerPositionStyle.display = 'block';
