@@ -4,7 +4,7 @@
     padding: 0;
     color: #000;
     .bodyText{
-      font-size: 20px;
+      font-size: 16px;
       color: #a7a7a7;
       line-height: 1.5em;
     }
@@ -18,6 +18,7 @@
     h1{
       color: #000;
       margin-top:140px;
+      margin-bottom: 60px;
     }
     .sectionCover{
       background-color: rgba(0, 0, 0, 0);
@@ -34,6 +35,7 @@
   }
   .imgContainer{
     width: 100%;
+    height: 670px;
     display: flex;
     .img1{
       flex: 1;
@@ -47,10 +49,41 @@
       flex: 1;
       width: 36vw;
       margin-left: 8px;
-      height: 40vw;
       background-image: url(../resource/image/about2.jpg);
       background-size:cover;
       background-position: center;
+    }
+  }
+  .videoPlay{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    margin: 0 auto;
+    #videoContainer{
+      z-index: 9;
+      width: 80%;
+      height: 50%;
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform:translate3d(-50%,-50%,0px);
+    }
+    #player{
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+    }
+    #stopVideo{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0%;
+      left: 0;
+      z-index: 0;
     }
   }
   .videoSize{
@@ -66,19 +99,23 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 1;
       .playBtn{
         color: blue;
         font-size: 40px;
         z-index: 100;
+        cursor: pointer;
       }
     }
     .videoLayer {
       height: 640px;
       width: 100%;
       overflow: hidden;
+      position: relative;
       video {
-        // min-width: 100%;
-        // min-height: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         min-height: 100%;
         min-width: 100%;
       }
@@ -154,10 +191,53 @@
     }
   .personalFootage{
     margin-top: 300px;
-    margin-bottom: 520px;
+    margin-bottom: 320px;
     .footageContents{
       float: left;
       width: 300px;
+    }
+  }
+  .client{
+    text-align: center;
+    margin-bottom: 250px;
+    p{
+      width: 40%;
+      margin: 0 auto;
+    }
+    .row{
+      display: block;
+      width: 50%;
+      height: 200px;
+    }
+    .logos{
+      display: flex;
+      position: absolute;
+      margin-top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .clientImg{
+      margin: 16px;
+      width: 15vw;
+      height: 8vh;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .logo1{
+      background-image: url(../resource/image/logo1.png);
+    }
+    .logo2{
+      background-image: url(../resource/image/logo2.png);
+    }
+    .logo3{
+      background-image: url(../resource/image/logo3.png);
+    }
+    .logo4{
+      background-image: url(../resource/image/logo4.png);
+    }
+    .logo5{
+      background-image: url(../resource/image/logo5.png);
     }
   }
 }
